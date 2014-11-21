@@ -5,7 +5,7 @@ Pequeño proyecto para cifrar cadenas con algoritmos simétricos
 
 ***
 
-Este código viene a partír de una práctica sobre algoritmos simétricos (de Seguridad y Protección de Sistemas Informáticos de la ETSIIT, Granada).
+Este código viene a partír de una práctica sobre algoritmos simétricos (de Seguridad y Protección de Sistemas Informáticos de la [ETSIIT, Granada](http://etsiit.ugr.es/)).
 
 Algunas mejores para introducir podrían ser:
 
@@ -16,7 +16,7 @@ Algunas mejores para introducir podrían ser:
 
 ***
 
-El programa está en C#, como adjunto el código fuente se podrá compilar con ` mcs cifradoSimetrico.cs`  y ejecutar `./cifradoSimetrico.exe`.
+El programa está en C#, como adjunto el [código fuente](https://github.com/JCristobal/CifradosSimetricos/blob/master/cifradoSimetrico.cs) se podrá compilar con ` mcs cifradoSimetrico.cs`  y ejecutar `./cifradoSimetrico.exe`.
 
 ***
 

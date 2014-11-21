@@ -1,5 +1,5 @@
 ﻿// Programa para cifrar o descifrar pequeños textos planos con algoritmos simétricos (AES, DES, Rijndael)
-// J. Cristóbal López Zafra, @JCristobal en GitHub, tobas92@gmail.com
+// J. Cristóbal López Zafra, @JCristobal en GitHub
 
 // Código basado en CipherUtility.cs de http://www.superstarcoders.com/blogs/posts/symmetric-encryption-in-c-sharp.aspx , modificado por J. Cristóbal López Zafra, para la asignatura SPSI, entrega 2: Algoritmos simétricos, de ETSIIT (Granada, España)
 
@@ -64,9 +64,7 @@ public class CipherUtility
 public static void Main(string[] args){
 
 
-	string plain = "", password;
-	string encrypted="";
-	string decrypted="";
+	string plain = "", password, encrypted="", decrypted="", caseSwitch = "";
 
 	Console.WriteLine("Escribe el texto para cifrar: ");
 	plain = Console.ReadLine () ;
@@ -74,7 +72,6 @@ public static void Main(string[] args){
 	Console.WriteLine("Y escribe la contraseña: ");
 	password = Console.ReadLine () ;
 
-	string caseSwitch = "";
 	Console.WriteLine("Elige el modo para cifrar, a para AES, b para DES, c para Rijndael: ");
 	caseSwitch = Console.ReadLine () ;
 
@@ -83,22 +80,22 @@ public static void Main(string[] args){
 	    case "a":  //AES
 		
 		encrypted = CipherUtility.Encrypt<AesManaged>(plain, password, "salt");
-
 		decrypted = CipherUtility.Decrypt<AesManaged>(encrypted, password, "salt");
+
 		break;
 
 	    case "b":  //DES
 	
 		encrypted = CipherUtility.Encrypt<TripleDESCryptoServiceProvider>(plain, password, "salt");
-
 		decrypted = CipherUtility.Decrypt<TripleDESCryptoServiceProvider>(encrypted, password, "salt");
+
 		break;
 
 	    case "c":  //Rijndael
 	
 		encrypted = CipherUtility.Encrypt<RijndaelManaged>(plain, password, "salt");
-
 		decrypted = CipherUtility.Decrypt<RijndaelManaged>(encrypted, password, "salt");
+
 		break;
 	}
 
