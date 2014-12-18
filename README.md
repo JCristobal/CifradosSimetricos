@@ -10,9 +10,13 @@ Este código viene a partír de una práctica sobre algoritmos simétricos (de S
 Algunas mejores para introducir podrían ser:
 
 * Leer archivos, pudiendo así codificar cadenas de texto plano más grandes
-* Escoger entre codificar y decodificar (al principio codifica, pero también está incluida la función de decodificado)
 * Poder usar "Salt" distintos
 * Mejora de eficiencia
+
+Mejoras introducidas respecto al código original:
+
+* Ofrecer la opción para escoger entre codificar y decodificar 
+
 
 ***
 

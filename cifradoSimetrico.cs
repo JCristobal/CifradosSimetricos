@@ -64,46 +64,84 @@ public class CipherUtility
 public static void Main(string[] args){
 
 
-	string plain = "", password, encrypted="", decrypted="", caseSwitch = "";
+	string plain = "", password, encrypted="", decrypted="", caseSwitch = "", mode="";
 
-	Console.WriteLine("Escribe el texto para cifrar: ");
-	plain = Console.ReadLine () ;
+	Console.WriteLine("Escribe 'c' para cifrar y 'd' para descifrar: ");
+	mode = Console.ReadLine () ;
 
-	Console.WriteLine("Y escribe la contraseña: ");
-	password = Console.ReadLine () ;
+	if(mode=="c"){
+		Console.WriteLine("Escribe el texto para cifrar: ");
+		plain = Console.ReadLine () ;
 
-	Console.WriteLine("Elige el modo para cifrar, a para AES, b para DES, c para Rijndael: ");
-	caseSwitch = Console.ReadLine () ;
+		Console.WriteLine("Y escribe la contraseña: ");
+		password = Console.ReadLine () ;
 
-	switch (caseSwitch){
+		Console.WriteLine("Elige el modo para cifrar, a para AES, b para DES, c para Rijndael: ");
+		caseSwitch = Console.ReadLine () ;
 
-	    case "a":  //AES
+		switch (caseSwitch){
+
+		    case "a":  //AES
 		
-		encrypted = CipherUtility.Encrypt<AesManaged>(plain, password, "salt");
-		decrypted = CipherUtility.Decrypt<AesManaged>(encrypted, password, "salt");
+			encrypted = CipherUtility.Encrypt<AesManaged>(plain, password, "salt");
 
-		break;
+			break;
 
-	    case "b":  //DES
+		    case "b":  //DES
 	
-		encrypted = CipherUtility.Encrypt<TripleDESCryptoServiceProvider>(plain, password, "salt");
-		decrypted = CipherUtility.Decrypt<TripleDESCryptoServiceProvider>(encrypted, password, "salt");
+			encrypted = CipherUtility.Encrypt<TripleDESCryptoServiceProvider>(plain, password, "salt");
 
-		break;
+			break;
 
-	    case "c":  //Rijndael
+		    case "c":  //Rijndael
 	
-		encrypted = CipherUtility.Encrypt<RijndaelManaged>(plain, password, "salt");
-		decrypted = CipherUtility.Decrypt<RijndaelManaged>(encrypted, password, "salt");
+			encrypted = CipherUtility.Encrypt<RijndaelManaged>(plain, password, "salt");
 
-		break;
+			break;
+		}
+
+		Console.WriteLine("\nTu texto encriptado: ");
+		Console.WriteLine(encrypted);
+	}
+	else if(mode=="d"){
+
+		Console.WriteLine("Escribe el texto para descifrar: ");
+		plain = Console.ReadLine () ;
+
+		Console.WriteLine("Y escribe la contraseña: ");
+		password = Console.ReadLine () ;
+
+		Console.WriteLine("Elige el modo para descifrar, a para AES, b para DES, c para Rijndael: ");
+		caseSwitch = Console.ReadLine () ;
+
+		switch (caseSwitch){
+
+		    case "a":  //AES
+		
+			decrypted = CipherUtility.Decrypt<AesManaged>(plain, password, "salt");
+
+			break;
+
+		    case "b":  //DES
+	
+			decrypted = CipherUtility.Decrypt<TripleDESCryptoServiceProvider>(plain, password, "salt");
+
+			break;
+
+		    case "c":  //Rijndael
+	
+			decrypted = CipherUtility.Decrypt<RijndaelManaged>(plain, password, "salt");
+
+			break;
+		}
+
+		Console.WriteLine("\nTu texto desencriptado: ");
+		Console.WriteLine(decrypted);
+	}
+	else{
+		Console.WriteLine("\nIntroduce la opción correcta ");
 	}
 
-	Console.WriteLine("\nTu texto encriptado: ");
-	Console.WriteLine(encrypted);
-
-	// Descomenta la siguiente linea si quieres que te devuelva el texto plano original, desencriptando el recien encriptado
-	//Console.WriteLine("Comprobamos el texto, el texto para encriptar era: "+decrypted);
 
 
 }
