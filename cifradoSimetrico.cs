@@ -59,15 +59,10 @@ public class CipherUtility
 			}
 		}
 	}
-
-       // Generate a simple yet strong salt key.  Only alphas in this example, but you can pimp the example easily.
-       // Use the RNGCryptoServiceProvider to get random bytes. So should be reasonably random
-       //
-       // name="maxSize">How much NaCl is required ?
-       // returns Random alpha string you can use as SALT
-       public static string GenerateSimpleSalt(int maxSize = 64)
+       
+       public static string GenerateSimpleSalt(int maxSize = 32)
        {
-           var alphaSet = new char[64]; // use 62 for strict alpha... that random generator for alphas only
+           var alphaSet = new char[32]; // use 62 for strict alpha... that random generator for alphas only
            //nicer results with set length * int i = 256. But still produces excellent random results.
            //alphaset plus 2.  Reduce to 62 if alpha requried
            alphaSet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890#!".ToCharArray();
@@ -79,7 +74,7 @@ public class CipherUtility
            {   // use b , a random from 0-255 as the index to our source array. Just mod on length set
                tempSB.Append(alphaSet[b % (alphaSet.Length)]);
            }
-           return tempSB.ToString();
+           return tempSB.ToString(); // returns Random alpha string you can use as SALT
        }
 
 
@@ -101,7 +96,7 @@ public static void Main(string[] args){
 		Console.WriteLine("Elige el modo para cifrar, a para AES, b para DES, c para Rijndael: ");
 		caseSwitch = Console.ReadLine () ;
 
-		Console.WriteLine("Si quieres una llave 'salt' fuerte pulsa 'x' (pero después no podrás descifrarlo): ");
+		Console.WriteLine("Si quieres una llave 'salt' fuerte pulsa 'x': ");
 		modo_salt = Console.ReadLine () ;
 
 		if(modo_salt=="x"){
@@ -131,6 +126,12 @@ public static void Main(string[] args){
 
 		Console.WriteLine("\nTu texto encriptado: ");
 		Console.WriteLine(encrypted);
+
+		if(modo_salt=="x"){
+			Console.WriteLine("\nY el 'satl' generado: ");
+			Console.WriteLine(salt);
+		}
+		
 	}
 	else if(mode=="d"){
 
@@ -142,6 +143,14 @@ public static void Main(string[] args){
 
 		Console.WriteLine("Elige el modo para descifrar, a para AES, b para DES, c para Rijndael: ");
 		caseSwitch = Console.ReadLine () ;
+
+		Console.WriteLine("Si tienes una llave 'salt' fuerte pulsa 'x' e introducela: ");
+		modo_salt = Console.ReadLine () ;
+
+		if(modo_salt=="x"){
+			salt=Console.ReadLine ();
+		}
+		else{salt="salt";}
 
 		switch (caseSwitch){
 

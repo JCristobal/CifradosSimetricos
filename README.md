@@ -17,6 +17,7 @@ Mejoras introducidas respecto al código original:
 * Ofrecer la opción para escoger entre codificar y decodificar 
 * Poder usar "Salt" más complejos
 
+
 ***
 
 El programa está en C#, como adjunto el [código fuente](https://github.com/JCristobal/CifradosSimetricos/blob/master/cifradoSimetrico.cs) se podrá compilar con ` mcs cifradoSimetrico.cs`  y ejecutar `./cifradoSimetrico.exe`.
